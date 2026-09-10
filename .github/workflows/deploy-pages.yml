@@ -29,6 +29,9 @@ jobs:
           GITHUB_PAGES: 'true'
           NEXT_PUBLIC_BASE_PATH: /grabli2
           NEXT_PUBLIC_SITE_URL: https://razilkik-ops.github.io/grabli2/
+          NEXT_PUBLIC_CLASS_3_PAYMENT_URL: ${{ vars.CLASS_3_PAYMENT_URL }}
+          NEXT_PUBLIC_CLASS_2_PAYMENT_URL: ${{ vars.CLASS_2_PAYMENT_URL }}
+          NEXT_PUBLIC_CLASS_1_PAYMENT_URL: ${{ vars.CLASS_1_PAYMENT_URL }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,5 +1,8 @@
 const TELEGRAM_URL = 'https://t.me/umanko4';
 const WHATSAPP_URL = 'https://wa.me/375296597050';
+const CLASS_3_PAYMENT_URL = process.env.NEXT_PUBLIC_CLASS_3_PAYMENT_URL || TELEGRAM_URL;
+const CLASS_2_PAYMENT_URL = process.env.NEXT_PUBLIC_CLASS_2_PAYMENT_URL || TELEGRAM_URL;
+const CLASS_1_PAYMENT_URL = process.env.NEXT_PUBLIC_CLASS_1_PAYMENT_URL || TELEGRAM_URL;
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const asset = (path: string) => `${BASE_PATH}${path}`;
 
@@ -13,32 +16,26 @@ const navItems = [
 
 const audienceItems = [
   {
-    tag: 'Наиболее полезно',
     text: 'Испытывает страх одиночества и будущего в личной жизни.',
     icon: '/assets/audience-icon-person-v2.png',
   },
   {
-    tag: 'Наиболее полезно',
     text: 'Живёт в «режиме директора 24/7» — привык тащить всё на себе и никак не может выключиться.',
     icon: '/assets/audience-icon-briefcase-v2.png',
   },
   {
-    tag: 'Особенно полезно',
     text: 'Привык ждать подвоха и держать оборону, блокируя собственное живое тепло.',
     icon: '/assets/audience-icon-shield-v2.png',
   },
   {
-    tag: 'Особенно полезно',
     text: 'Раз за разом опекает, понимает и мотивирует других, получая в ответ лишь опустошение.',
     icon: '/assets/audience-icon-clock-v2.png',
   },
   {
-    tag: 'Просто необходимо',
     text: 'Живёт в режиме отложенного счастья, отдавая ресурсы, время и силы без взаимности.',
     icon: '/assets/audience-icon-heart-v2.png',
   },
   {
-    tag: 'Просто необходимо',
     text: 'Подавляет свои желания, соглашаясь на вторые роли, пока внутри копится злость на собственную мягкость.',
     icon: '/assets/audience-icon-sprout-v2.png',
   },
@@ -112,28 +109,31 @@ const modules = [
 
 const plans = [
   {
-    name: 'Пакет 1',
-    promise: 'Понять и попробовать',
+    name: 'Класс 3',
+    promise: 'Увидеть, узнать, понять, попробовать, научиться',
     duration: '49 дней',
     price: '880 €',
-    items: ['7 групповых видеовстреч', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»'],
+    items: ['7 групповых уроков', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»'],
+    paymentUrl: CLASS_3_PAYMENT_URL,
   },
   {
-    name: 'Пакет 2',
-    promise: 'Получить навык и закрепить',
+    name: 'Класс 2',
+    promise: 'Увидеть, узнать, понять, попробовать, научиться, получить навык, закрепить',
     duration: '77 дней',
     price: '1210 €',
     badge: '10 мест',
     featured: true,
-    items: ['7 групповых видеовстреч', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»', '11 личных видеовстреч'],
+    items: ['7 групповых уроков', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»', '11 видеовстреч'],
+    paymentUrl: CLASS_2_PAYMENT_URL,
   },
   {
-    name: 'Пакет 3',
-    promise: 'Уметь + VIP-поддержка',
+    name: 'Класс 1',
+    promise: 'Увидеть, узнать, понять, попробовать, научиться, получить навык, закрепить, уметь + VIP-поддержка',
     duration: '92 дня',
     price: '1850 €',
     badge: '3 места',
-    items: ['7 групповых видеовстреч', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»', '14 личных видеовстреч', 'Быстрая поддержка в сообщениях и коротких созвонах'],
+    items: ['7 групповых уроков', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»', '14 видеовстреч', 'Быстрая поддержка в формате сообщений и коротких созвонов'],
+    paymentUrl: CLASS_1_PAYMENT_URL,
   },
 ];
 
@@ -172,14 +172,15 @@ const credentials = [
 ];
 
 const reviews = [
-  ['/assets/review-screenshot-1.png', 'Отзыв участницы программы о ясности, личных границах и снижении напряжения'],
-  ['/assets/review-screenshot-2.png', 'Отзыв Ольги о внутренней опоре, тепле и доверии'],
-  ['/assets/review-screenshot-3.png', 'Отзыв Екатерины о выходе из режима «я всё сама»'],
+  ['/assets/review-program-1.jpg', 'Отзыв участницы семинедельной программы о ясности, логике и внутренней уверенности'],
+  ['/assets/review-program-2.jpg', 'Отзыв участницы программы о внутренней опоре, спокойствии и радости'],
+  ['/assets/review-program-3.jpg', 'Отзыв участницы программы о безопасности, внутреннем покое и энергии'],
+  ['/assets/review-program-4.jpg', 'Отзыв Александры о порядке, свободном времени и выходе из автопилота'],
 ];
 
-function Cta({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+function Cta({ children, className = '', href = TELEGRAM_URL }: { children: React.ReactNode; className?: string; href?: string }) {
   return (
-    <a className={`cta ${className}`} href={TELEGRAM_URL} target="_blank" rel="noreferrer">
+    <a className={`cta ${className}`} href={href} target="_blank" rel="noreferrer">
       {children}
       <span aria-hidden="true">↗</span>
     </a>
@@ -194,14 +195,14 @@ const structuredData = {
   provider: {
     '@type': 'Person',
     name: 'Константин Юманов',
-    jobTitle: 'Военный психолог, системный аналитик',
+    jobTitle: 'Социальный педагог, практический психолог',
   },
   offers: plans.map((plan) => ({
     '@type': 'Offer',
     priceCurrency: 'EUR',
     price: plan.price.replace(/[^0-9]/g, ''),
     name: `${plan.name}: ${plan.promise}`,
-    url: TELEGRAM_URL,
+    url: plan.paymentUrl,
   })),
 };
 
@@ -240,9 +241,9 @@ export default function Home() {
             <a className="ghost-cta" href="#program">Посмотреть программу</a>
           </div>
           <ul className="hero-meta" aria-label="Основные параметры программы">
-            <li><strong>7</strong><span>недель работы</span></li>
-            <li><strong>7</strong><span>групповых встреч</span></li>
-            <li><strong>28</strong><span>дней интеграции</span></li>
+            <li><strong>7</strong><span>уроков — 7 недель</span></li>
+            <li><strong>до 14</strong><span>групповых видеовстреч</span></li>
+            <li><strong>49–92</strong><span>дней программы</span></li>
           </ul>
         </div>
       </section>
@@ -319,20 +320,19 @@ export default function Home() {
       >
         <div className="section-shell audience-shell">
           <p className="section-label light">Кому подойдёт программа</p>
-          <h2 id="audience-title">Это для вас, если привычная сила уже стала тяжёлой ношей.</h2>
+          <h2 id="audience-title">Это полезно тем, кто:</h2>
           <div className="audience-list">
             {audienceItems.map((item) => (
               <article className="audience-item" key={item.text}>
                 <img src={asset(item.icon)} alt="" aria-hidden="true" />
                 <div>
-                  <span>{item.tag}</span>
                   <p>{item.text}</p>
                 </div>
               </article>
             ))}
           </div>
           <div className="audience-cta-card">
-            <p>Не нужно становиться слабее. Нужно перестать тратить силу на сценарий, который больше не работает.</p>
+            <p>Не нужно становиться сильнее или слабее. Нужно перестать тратить силу на деструктивный сценарий.</p>
             <Cta>Принять участие в программе</Cta>
           </div>
         </div>
@@ -404,11 +404,11 @@ export default function Home() {
                 <ul>
                   {plan.items.map((item) => <li key={item}>{item}</li>)}
                 </ul>
-                <Cta className="price-cta">Оформить участие</Cta>
+                <Cta className="price-cta" href={plan.paymentUrl}>Оформить {plan.name}</Cta>
               </article>
             ))}
           </div>
-          <p className="pricing-note">Кнопки ведут на прямой контакт в Telegram — там можно уточнить детали и получить актуальную ссылку на оплату.</p>
+          <p className="pricing-note">Выберите подходящий класс и перейдите к оформлению участия.</p>
         </div>
       </section>
 
@@ -434,7 +434,8 @@ export default function Home() {
       <section className="section author" id="author" aria-labelledby="author-title">
         <div className="section-shell author-shell">
           <p className="section-label light">Автор и ведущий</p>
-          <h2 id="author-title">Программу ведёт лично Константин Александрович Юманов.</h2>
+          <h2 id="author-title">Константин Александрович Юманов.</h2>
+          <p className="author-profession">Социальный педагог — практический психолог</p>
           <div className="author-layout">
             <figure className="author-photo">
               <img src={asset('/assets/author-konstantin.jpg')} alt="Константин Александрович Юманов" loading="lazy" />
@@ -488,7 +489,12 @@ export default function Home() {
       <footer className="footer">
         <a className="brand" href="#hero-title">Анти-грабли</a>
         <p>ИП Юманов Константин Александрович · УНП 193001455</p>
-        <p>Все права защищены © 2026</p>
+        <nav className="legal-links" aria-label="Юридические документы">
+          <a href={asset('/documents/public-offer.docx')} target="_blank" rel="noreferrer">Публичная оферта</a>
+          <a href={asset('/documents/personal-data-policy.docx')} target="_blank" rel="noreferrer">Политика обработки персональных данных</a>
+          <a href={asset('/documents/cookie-policy.docx')} target="_blank" rel="noreferrer">Политика обработки куки</a>
+        </nav>
+        <p className="copyright">Все права защищены © 2026</p>
       </footer>
     </main>
   );
