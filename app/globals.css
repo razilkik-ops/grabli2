@@ -415,7 +415,8 @@ dd {
 
 .manifesto-copy p {
   margin-bottom: 22px;
-  color: #4a372f;
+  color: var(--ink);
+  font-family: var(--display);
   font-size: clamp(27px, 3vw, 42px);
   line-height: 1.42;
 }

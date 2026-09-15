@@ -1,8 +1,8 @@
 const TELEGRAM_URL = 'https://t.me/umanko4';
 const WHATSAPP_URL = 'https://wa.me/375296597050';
-const CLASS_3_PAYMENT_URL = process.env.NEXT_PUBLIC_CLASS_3_PAYMENT_URL || TELEGRAM_URL;
-const CLASS_2_PAYMENT_URL = process.env.NEXT_PUBLIC_CLASS_2_PAYMENT_URL || TELEGRAM_URL;
-const CLASS_1_PAYMENT_URL = process.env.NEXT_PUBLIC_CLASS_1_PAYMENT_URL || TELEGRAM_URL;
+const CLASS_3_PAYMENT_URL = 'https://checkout.bepaid.by/v2/confirm_order/prd_cbcf95dd6f34fd81/36740';
+const CLASS_2_PAYMENT_URL = 'https://checkout.bepaid.by/v2/confirm_order/prd_bbbcd0bf1f4eaead/36740';
+const CLASS_1_PAYMENT_URL = 'https://checkout.bepaid.by/v2/confirm_order/prd_75372471800e3bb4/36740';
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const asset = (path: string) => `${BASE_PATH}${path}`;
 
@@ -113,7 +113,7 @@ const plans = [
     promise: 'Увидеть, узнать, понять, попробовать, научиться',
     duration: '49 дней',
     price: '880 €',
-    items: ['7 групповых уроков', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»'],
+    items: ['7 групповых', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»'],
     paymentUrl: CLASS_3_PAYMENT_URL,
   },
   {
@@ -123,7 +123,7 @@ const plans = [
     price: '1210 €',
     badge: '10 мест',
     featured: true,
-    items: ['7 групповых уроков', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»', '11 видеовстреч'],
+    items: ['7 групповых', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»', '11 видеовстреч'],
     paymentUrl: CLASS_2_PAYMENT_URL,
   },
   {
@@ -132,7 +132,7 @@ const plans = [
     duration: '92 дня',
     price: '1850 €',
     badge: '3 места',
-    items: ['7 групповых уроков', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»', '14 видеовстреч', 'Быстрая поддержка в формате сообщений и коротких созвонов'],
+    items: ['7 групповых', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»', '14 видеовстреч', 'Быстрая поддержка в формате сообщений и коротких созвонов'],
     paymentUrl: CLASS_1_PAYMENT_URL,
   },
 ];
@@ -241,7 +241,7 @@ export default function Home() {
             <a className="ghost-cta" href="#program">Посмотреть программу</a>
           </div>
           <ul className="hero-meta" aria-label="Основные параметры программы">
-            <li><strong>7</strong><span>уроков — 7 недель</span></li>
+            <li><strong>7</strong><span>недель</span></li>
             <li><strong>до 14</strong><span>групповых видеовстреч</span></li>
             <li><strong>49–92</strong><span>дней программы</span></li>
           </ul>
