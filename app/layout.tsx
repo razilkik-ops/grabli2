@@ -3,7 +3,7 @@ import './globals.css';
 
 const title = '«Анти-грабли» — 7-недельная программа Константина Юманова';
 const description = 'Практическая системная программа по выходу из повторяющихся сценариев в личной жизни, восстановлению внутренней опоры и личных границ.';
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://grabli.org/';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://grabli.net/';
 const siteRoot = siteUrl.replace(/\/$/, '');
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const fontFaces = `

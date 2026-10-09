@@ -1,3 +1,5 @@
+import ReviewGallery from './ReviewGallery';
+
 const TELEGRAM_URL = 'https://t.me/umanko4';
 const WHATSAPP_URL = 'https://wa.me/375296597050';
 const CLASS_3_PAYMENT_URL = 'https://checkout.bepaid.by/v2/confirm_order/prd_cbcf95dd6f34fd81/36740';
@@ -461,14 +463,7 @@ export default function Home() {
         <div className="section-shell reviews-shell">
           <p className="section-label">Отзывы</p>
           <h2 id="reviews-title">Истории тех, кто уже начал жить по своим правилам.</h2>
-          <div className="review-grid">
-            {reviews.map(([src, alt], index) => (
-              <article className="review-card" key={src}>
-                <img src={asset(src)} alt={alt} loading="lazy" />
-                <a href={asset(src)} target="_blank" rel="noreferrer" aria-label={`Открыть отзыв ${index + 1} в полном размере`}>Открыть</a>
-              </article>
-            ))}
-          </div>
+          <ReviewGallery reviews={reviews.map(([src, alt]) => ({ src: asset(src), alt }))} />
         </div>
       </section>
 
@@ -488,11 +483,11 @@ export default function Home() {
 
       <footer className="footer">
         <a className="brand" href="#hero-title">Анти-грабли</a>
-        <p>ИП Юманов Константин Александрович · УНП 193001455</p>
+        <p>ИП Юманов Константин Александрович · УНП AA9542341</p>
         <nav className="legal-links" aria-label="Юридические документы">
-          <a href={asset('/documents/public-offer.docx')} target="_blank" rel="noreferrer">Публичная оферта</a>
-          <a href={asset('/documents/personal-data-policy.docx')} target="_blank" rel="noreferrer">Политика обработки персональных данных</a>
-          <a href={asset('/documents/cookie-policy.docx')} target="_blank" rel="noreferrer">Политика обработки куки</a>
+          <a href={asset('/legal/public-offer.pdf')} target="_blank" rel="noreferrer">Публичная оферта</a>
+          <a href={asset('/legal/privacy-policy.pdf')} target="_blank" rel="noreferrer">Политика обработки персональных данных</a>
+          <a href={asset('/legal/cookie-policy.pdf')} target="_blank" rel="noreferrer">Политика обработки куки</a>
         </nav>
         <p className="copyright">Все права защищены © 2026</p>
       </footer>

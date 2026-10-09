@@ -1172,7 +1172,16 @@ dd {
   object-position: top;
 }
 
-.review-card a {
+.review-open {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: #fff;
+  cursor: zoom-in;
+}
+
+.review-open span {
   display: grid;
   min-height: 54px;
   border-top: 1px solid rgba(139, 101, 78, 0.2);
@@ -1182,10 +1191,84 @@ dd {
   place-items: center;
 }
 
-.review-card a:hover,
-.review-card a:focus-visible {
+.review-open:hover span,
+.review-open:focus-visible span {
   background: #f8eee7;
+}
+
+.review-open:focus-visible {
+  outline: 3px solid var(--wine);
+  outline-offset: -3px;
+}
+
+.review-lightbox {
+  width: fit-content;
+  max-width: min(92vw, 900px);
+  max-height: 92vh;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 18px;
+  background: transparent;
+}
+
+.review-lightbox::backdrop {
+  background: rgba(24, 15, 12, 0.84);
+  backdrop-filter: blur(5px);
+}
+
+.review-lightbox-content {
+  position: relative;
+  width: fit-content;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--ink);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
+}
+
+.review-lightbox-content > img {
+  display: block;
+  width: auto;
+  max-width: min(92vw, 900px);
+  height: auto;
+  max-height: 92vh;
+  object-fit: contain;
+}
+
+.review-lightbox-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  color: var(--ink);
+  background: rgba(255, 250, 247, 0.94);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  place-items: center;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.review-lightbox-close span {
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.review-lightbox-close:hover,
+.review-lightbox-close:focus-visible {
+  background: #fff;
   outline: none;
+  transform: scale(1.06);
+}
+
+.review-lightbox-close:focus-visible {
+  box-shadow: 0 0 0 4px rgba(255, 231, 213, 0.55), 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
 /* Contact and footer */
