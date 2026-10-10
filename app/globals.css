@@ -906,11 +906,24 @@ dd {
 }
 
 .price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 14px;
   margin: 8px 0 24px;
   color: var(--ink);
   font-family: var(--display);
   font-size: clamp(44px, 4vw, 58px);
   line-height: 1.1;
+}
+
+.price > span {
+  white-space: nowrap;
+}
+
+.price-byn {
+  font-family: var(--sans);
+  font-size: clamp(20px, 1.65vw, 26px);
 }
 
 .featured .price {

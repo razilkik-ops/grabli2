@@ -115,6 +115,7 @@ const plans = [
     promise: 'Увидеть, узнать, понять, попробовать, научиться',
     duration: '49 дней',
     price: '880 €',
+    priceByn: '3215 BYN',
     items: ['7 групповых', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»'],
     paymentUrl: CLASS_3_PAYMENT_URL,
   },
@@ -123,6 +124,7 @@ const plans = [
     promise: 'Увидеть, узнать, понять, попробовать, научиться, получить навык, закрепить',
     duration: '77 дней',
     price: '1210 €',
+    priceByn: '4420 BYN',
     badge: '10 мест',
     featured: true,
     items: ['7 групповых', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»', '11 видеовстреч'],
@@ -133,6 +135,7 @@ const plans = [
     promise: 'Увидеть, узнать, понять, попробовать, научиться, получить навык, закрепить, уметь + VIP-поддержка',
     duration: '92 дня',
     price: '1850 €',
+    priceByn: '5440 BYN',
     badge: '3 места',
     items: ['7 групповых', 'Рабочая тетрадь', 'Эмо-аптечка «Сияй»', '14 видеовстреч', 'Быстрая поддержка в формате сообщений и коротких созвонов'],
     paymentUrl: CLASS_1_PAYMENT_URL,
@@ -402,7 +405,7 @@ export default function Home() {
                 <p className="price-name">{plan.name}</p>
                 <h3>{plan.promise}</h3>
                 <p className="price-duration">{plan.duration}</p>
-                <p className="price">{plan.price}</p>
+                <p className="price"><span>{plan.price}</span><span className="price-byn">/ {plan.priceByn}</span></p>
                 <ul>
                   {plan.items.map((item) => <li key={item}>{item}</li>)}
                 </ul>
